@@ -43,7 +43,9 @@ class Countries extends Component {
         "Eco Vitality Index",
         "Edit"],
       loading: true,
-      editing: false
+      showHistory: false,
+      editing: false,
+      updating: 0
     }
 
     this.renderTableData = this.renderTableData.bind(this)
@@ -129,7 +131,14 @@ class Countries extends Component {
 
 
   async updateCountry(id, name, total, perCap, epi, eh, ev) {
-    this.state.countryData.methods.updateCountry(id, name, total, perCap, epi, eh, ev).send({ from: this.state.account })
+
+    this.setState({loading:false})
+
+    await this.state.countryData.methods.updateCountry(id, name, total, perCap, epi, eh, ev).send({ from: this.state.account })
+
+    this.setState({ editing: false })
+
+    this.setState({loading:true})
   }
 
   /*
@@ -146,30 +155,93 @@ class Countries extends Component {
   */
 
   editing(country) {
-    //this.setState({ editing: true })
 
+    this.setState({ updating: country })
     this.setState({ editing: true })
+
   }
 
 
+  renderEditData(toUpdate) {
 
-  renderEditData() {
       return this.state.countries.map((eachCountry, index) => {
          const { id, country, totalCO2, perCapCO2, envPerfIndex, envHealth, ecoVitality } = eachCountry //destructuring
-         return (
-            <tr key={id}>
-               <td>{id}</td>
-               <td>{country}</td>
-               <td>{totalCO2}</td>
-               <td>{perCapCO2}</td>
-               <td>{envPerfIndex}</td>
-               <td>{envHealth}</td>
-               <td>{ecoVitality}</td>
-               <td>
-                <button> Submit </button>
-               </td>
-            </tr>
-         )
+
+         if (id == toUpdate) {
+           return (
+                <tr key={id}>
+                   <td>{id}</td>
+
+                   <td>{country}</td>
+
+                   <td>
+                    <form className = "sendForm" id="updateCountryForm" onSubmit={(event) => {
+                     event.preventDefault()
+                     this.updateCountry(id, country, this.newTotal.value, this.newPerCap.value, this.newEPI.value, this.newEH.value, this.newEV.value)
+                    }}>
+                      <input ref={(input) => this.newTotal = input} type="text" className="addCountryForm" defaultValue={totalCO2} required />
+                    </form>
+                   </td>
+
+                   <td>
+                     <form className = "sendForm" id="updateCountryForm" onSubmit={(event) => {
+                      event.preventDefault()
+                      this.updateCountry(id, country, this.newTotal.value, this.newPerCap.value, this.newEPI.value, this.newEH.value, this.newEV.value)
+                     }}>
+                       <input ref={(input) => this.newPerCap = input} type="text" className="addCountryForm" defaultValue={perCapCO2} required />
+                     </form>
+                   </td>
+
+                   <td>
+                     <form className = "sendForm" id="updateCountryForm" onSubmit={(event) => {
+                      event.preventDefault()
+                      this.updateCountry(id, country, this.newTotal.value, this.newPerCap.value, this.newEPI.value, this.newEH.value, this.newEV.value)
+                     }}>
+                       <input ref={(input) => this.newEPI = input} type="text" className="addCountryForm" defaultValue={envPerfIndex} required />
+                     </form>
+                   </td>
+
+                   <td>
+                     <form className = "sendForm" id="updateCountryForm" onSubmit={(event) => {
+                      event.preventDefault()
+                      this.updateCountry(id, country, this.newTotal.value, this.newPerCap.value, this.newEPI.value, this.newEH.value, this.newEV.value)
+                     }}>
+                       <input ref={(input) => this.newEH = input} type="text" className="addCountryForm" defaultValue={envHealth} required />
+                     </form>
+                   </td>
+
+                   <td>
+                     <form className = "sendForm" id="updateCountryForm" onSubmit={(event) => {
+                      event.preventDefault()
+                      this.updateCountry(id, country, this.newTotal.value, this.newPerCap.value, this.newEPI.value, this.newEH.value, this.newEV.value)
+                     }}>
+                       <input ref={(input) => this.newEV = input} type="text" className="addCountryForm" defaultValue={ecoVitality} required />
+                     </form>
+                   </td>
+
+                   <td>
+                    <input type="submit" hidden={false} form="updateCountryForm"/>
+                   </td>
+                </tr>
+           )
+         }
+
+         else {
+           return (
+              <tr key={id}>
+                 <td>{id}</td>
+                 <td>{country}</td>
+                 <td>{totalCO2}</td>
+                 <td>{perCapCO2}</td>
+                 <td>{envPerfIndex}</td>
+                 <td>{envHealth}</td>
+                 <td>{ecoVitality}</td>
+                 <td>
+                  <button> Submit </button>
+                 </td>
+              </tr>
+           )
+         }
       })
    }
 
@@ -221,7 +293,7 @@ class Countries extends Component {
               <tbody>
                 <tr>{this.renderTableHeader()}</tr>
 
-                  {this.state.editing ? this.renderEditData() :
+                  {this.state.editing ? this.renderEditData(this.state.updating) :
                   this.renderTableData()
                   }
 
@@ -229,7 +301,9 @@ class Countries extends Component {
             </table>
           </div>
 
+          {this.state.showHistory ? <span>Show History</span> :
           <NewCountry />
+          }
 
           <div className="paddedDiv" />
 
