@@ -37,11 +37,9 @@ class Home extends Component {
   async isInstalled() {
      if (typeof Web3 !== 'undefined'){
         console.log('Web3 Provider is installed')
-        this.setState({ web3: true })
      }
      else{
         console.log('No Web3 Provider!')
-        alert("No Ethereum provider detected!")
      }
   }
 
@@ -64,13 +62,15 @@ class Home extends Component {
 
     if (window.ethereum) {
       window.web3 = new Web3(window.ethereum)
+      this.setState({ web3: true })
       await window.ethereum.enable()
     }
     else if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider)
+      this.setState({ web3: true })
     }
     else {
-      window.alert('Non-Ethereum browser detected. Please install MetaMask or similar!')
+      window.alert('Non-Ethereum browser detected. Please install an Ethereum provider!')
     }
   }
 
