@@ -103,11 +103,12 @@ class Home extends Component {
         {this.state.web3 ?
           <div>
             <p>
-              Welcome to <code>Climateth</code>
+              Welcome to <code>Climateth</code><br />
+              An Extra-Jurisdictional Carbon Emissions Database
             </p>
             <img src={logo} className="App-logo" alt="logo" />
             <p>
-              An Extra-Jurisdictional Carbon Emissions Database
+              Carbon data currently stored on the Ropsten (Ethereum) testnet.
             </p>
             <a
               className="App-link"

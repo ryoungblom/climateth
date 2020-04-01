@@ -18,6 +18,11 @@ class Help extends Component {
             Please make sure to have a Web3 provider (metamask or similar) in order to use this database.
           </p>
 
+          <p>
+            Climateth currently runs on the Ropsten testnet (Contract: 0x7f38B87C937fDE513616a78B37d3d4B10EB6cf6C). <br />
+            A local build can also be run via the source code.
+          </p>
+
         </header>
       </div>
 
