@@ -123,7 +123,7 @@ class Home extends Component {
 
           <div>
             <p>
-              Welcome to <code>Climateth</code> <br>
+              Welcome to <code>Climateth</code> <br />
               An Extra-Jurisdictional Carbon Emissions Database.
             </p>
             <img src={logo} className="App-logo" alt="logo" />
