@@ -28,6 +28,7 @@ class Home extends Component {
     this.state = {
       account: '',
       balance: '',
+      web3: false,
       loading: true
     }
   }
@@ -36,9 +37,11 @@ class Home extends Component {
   async isInstalled() {
      if (typeof Web3 !== 'undefined'){
         console.log('Web3 Provider is installed')
+        this.setState({ web3: true })
      }
      else{
         console.log('No Web3 Provider!')
+        alert("No Ethereum provider detected!")
      }
   }
 
@@ -96,24 +99,54 @@ class Home extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p>
-            Welcome to <code>Climateth</code>
-          </p>
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            An Extra-Jurisdictional Carbon Emissions Database
-          </p>
-          <a
-            className="App-link"
-            href="https://github.com/ryoungblom/climateth"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Source Code
-          </a>
+
+        {this.state.web3 ?
+          <div>
+            <p>
+              Welcome to <code>Climateth</code>
+            </p>
+            <img src={logo} className="App-logo" alt="logo" />
+            <p>
+              An Extra-Jurisdictional Carbon Emissions Database
+            </p>
+            <a
+              className="App-link"
+              href="https://github.com/ryoungblom/climateth"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source Code
+            </a>
+          </div>
+
+          :
+
+          <div>
+            <p>
+              Welcome to <code>Climateth</code> <br>
+              An Extra-Jurisdictional Carbon Emissions Database.
+            </p>
+            <img src={logo} className="App-logo" alt="logo" />
+            <p>
+              It looks like you don't have an Ethereum provider...<br />
+              Please install a web3 provider (or yours may be locked),<br />
+              or use a dApp browser!
+            </p>
+            <a
+              className="App-link"
+              href="https://github.com/ryoungblom/climateth"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source Code
+            </a>
+          </div>
+        }
+
         </header>
 
       </div>
+
     );
   }
 }
