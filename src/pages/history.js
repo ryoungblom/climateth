@@ -43,6 +43,7 @@ class History extends Component {
         "Eco Vitality Index",
         "Edit No."],
       loading: true,
+      current: "Carbon",
       showHistory: true,
       updating: 0
     }
@@ -117,6 +118,8 @@ class History extends Component {
 
   async getEditData(editCount, country) {
 
+    this.setState({ edits: [] })
+
     for (var i = 0; i < editCount; i++) {
       const singleCountry = await this.state.countryData.methods.returnCountry(i, country).call()
       this.setState({
@@ -142,6 +145,8 @@ class History extends Component {
   async showEditHistory(id, country) {
 
     this.setState({ showHistory: false })
+
+    this.setState({ current: country })
 
     var editCount = await this.state.countryData.methods.returnCountryCount(id).call()
 
@@ -208,7 +213,7 @@ class History extends Component {
         <header className="App-header">
 
           <div className = "centerFlex">
-            <h1 id='title'>Carbon Data History</h1>
+            <h1 id='title'>{this.state.current} Data History</h1>
 
             {this.state.showHistory ?
             <div className = "tableFlexHistory">

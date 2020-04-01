@@ -97,7 +97,7 @@ class Home extends Component {
       <div className="App">
         <header className="App-header">
           <p>
-            Welcome to <code>Tech4Good</code>
+            Welcome to <code>Climateth</code>
           </p>
           <img src={logo} className="App-logo" alt="logo" />
           <p>

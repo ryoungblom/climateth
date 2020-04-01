@@ -22,11 +22,6 @@ class Countries extends Component {
   }
 
 
-  async componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-
   constructor(props) {
     super(props)
     this.state = {
@@ -52,7 +47,6 @@ class Countries extends Component {
     this.renderEditData = this.renderEditData.bind(this)
     this.renderTableHeader = this.renderTableHeader.bind(this)
     this.editing = this.editing.bind(this)
-    this.showEditHistory = this.showEditHistory.bind(this)
   }
 
 
@@ -120,6 +114,8 @@ class Countries extends Component {
 
   async getData() {
 
+    this.setState({ countries: [] })
+
     var countryCount = await this.state.countryData.methods.countryCount().call()
 
     for (var i = 0; i < countryCount; i++) {
@@ -135,11 +131,13 @@ class Countries extends Component {
 
     this.setState({loading:false})
 
-    await this.state.countryData.methods.updateCountry(id, name, total, perCap, epi, eh, ev).send({ from: this.state.account })
-
-    this.setState({ editing: false })
+    this.state.countryData.methods.updateCountry(id, name, total, perCap, epi, eh, ev).send({ from: this.state.account }).once('receipt', (receipt) => {
+        this.setState({ editing: false })
+        this.getData()
+      })
 
     this.setState({loading:true})
+
   }
 
   /*
@@ -154,15 +152,6 @@ class Countries extends Component {
 
   }
   */
-
-  async showEditHistory(country) {
-
-    this.setState({ showHistory: true })
-
-    console.log(country)
-    alert(country)
-
-  }
 
 
   editing(country) {
