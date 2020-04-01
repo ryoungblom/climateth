@@ -52,6 +52,7 @@ class Countries extends Component {
     this.renderEditData = this.renderEditData.bind(this)
     this.renderTableHeader = this.renderTableHeader.bind(this)
     this.editing = this.editing.bind(this)
+    this.showEditHistory = this.showEditHistory.bind(this)
   }
 
 
@@ -154,6 +155,16 @@ class Countries extends Component {
   }
   */
 
+  async showEditHistory(country) {
+
+    this.setState({ showHistory: true })
+
+    console.log(country)
+    alert(country)
+
+  }
+
+
   editing(country) {
 
     this.setState({ updating: country })
@@ -252,7 +263,7 @@ class Countries extends Component {
          return (
             <tr key={id}>
                <td>{id}</td>
-               <td>{country}</td>
+               <td onClick={() => this.showEditHistory(country)}>{country}</td>
                <td>{totalCO2}</td>
                <td>{perCapCO2}</td>
                <td>{envPerfIndex}</td>
@@ -301,9 +312,7 @@ class Countries extends Component {
             </table>
           </div>
 
-          {this.state.showHistory ? <span>Show History</span> :
           <NewCountry />
-          }
 
           <div className="paddedDiv" />
 

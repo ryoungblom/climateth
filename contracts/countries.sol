@@ -1,4 +1,5 @@
 pragma solidity ^0.5.16;
+pragma experimental ABIEncoderV2;
 
 contract CountryData {
 
@@ -20,7 +21,7 @@ contract CountryData {
   mapping (string => Country[]) public history;
 
   constructor () public {
-    genesis();
+    //genesis();
   }
 
 
@@ -58,6 +59,19 @@ contract CountryData {
 
     history[name].push(countryHistory);
 
+  }
+
+  function returnCountryCount (uint id) public view returns (uint) {
+
+    uint editCount = countries[id].changes;
+
+    return editCount;
+  }
+
+
+  function returnCountry (uint index, string memory name) public view returns (Country memory) {
+
+    return history[name][index];
   }
 
 }

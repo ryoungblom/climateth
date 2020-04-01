@@ -6,6 +6,7 @@ import Navigation from './components/nav.js'
 import Home from './pages/home.js';
 import Countries from './pages/countries.js';
 import Companies from './pages/companies.js';
+import History from './pages/history.js'
 import Error from './pages/error.js';
 import Help from './pages/help.js'
 
@@ -28,8 +29,12 @@ class App extends Component {
                (<Countries {...props} state={this.state}/>)
              } exact/>
 
+             <Route path="/history" render={props =>
+               (<History {...props} state={this.state}/>)
+             } exact/>
+
              <Route path="/help" component={Help}/>
-             
+
              <Route component={Error}/>
            </Switch>
         </div>
