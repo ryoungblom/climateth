@@ -5,6 +5,10 @@ import '../css/home.css';
 
 class Error extends Component {
 
+  componentDidMount(){
+    document.title = "Whoops..."
+  }
+
   render() {
     return (
 

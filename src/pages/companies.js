@@ -13,7 +13,7 @@ class Companies extends Component {
 
 
   componentDidMount(){
-    document.title = "react-web3"
+    document.title = "Climateth"
   }
 
 

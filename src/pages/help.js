@@ -4,6 +4,10 @@ import '../App.css';
 
 class Help extends Component {
 
+  componentDidMount(){
+    document.title = "Climateth"
+  }
+
   render() {
     return (
       <div className="App">
