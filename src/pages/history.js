@@ -41,7 +41,8 @@ class History extends Component {
         "Environmental Performance Index",
         "Environmental Health Index",
         "Eco Vitality Index",
-        "Edit No."],
+        "Edit No.",
+        "Time"],
       loading: true,
       current: "Carbon",
       showHistory: true,
@@ -171,15 +172,21 @@ class History extends Component {
 
    renderTableEditData() {
        return this.state.edits.map((eachEditCountry, index) => {
-          const { id, country, totalCO2, perCapCO2, envPerfIndex, envHealth, ecoVitality, changes } = eachEditCountry //destructuring
+          const { id, country, totalCO2, perCapCO2, envPerfIndex, envHealth, ecoVitality, changes, editTime } = eachEditCountry //destructuring
+
+          var createDate = editTime
+          var editDate = new Date (createDate * 1000)
+          var newDate = editDate.toString()
+
           return (
              <tr key={id}>
-                <td>{totalCO2}</td>
-                <td>{perCapCO2}</td>
-                <td>{envPerfIndex}</td>
-                <td>{envHealth}</td>
-                <td>{ecoVitality}</td>
-                <td>{changes}</td>
+                <td className="renderHistoryHeader">{totalCO2}</td>
+                <td className="renderHistoryHeader">{perCapCO2}</td>
+                <td className="renderHistoryHeader">{envPerfIndex}</td>
+                <td className="renderHistoryHeader">{envHealth}</td>
+                <td className="renderHistoryHeader">{ecoVitality}</td>
+                <td className="renderHistoryHeader">{changes}</td>
+                <td className="renderHistoryHeader">{newDate}</td>
              </tr>
           )
        })
@@ -196,7 +203,7 @@ class History extends Component {
 
    renderTableEditHeader() {
       return this.state.headers.map((label, index) => {
-         return <th key={label}>{label.toUpperCase()}</th>
+         return <th key={label} className="renderHistoryHeader">{label.toUpperCase()}</th>
       })
    }
 

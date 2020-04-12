@@ -60,3 +60,7 @@ table, th, td {
 .paddedDiv {
   padding-bottom: 50px;
 }
+
+.renderHistoryHeader {
+  font-size: calc(1px + 2vmin) !important;
+}

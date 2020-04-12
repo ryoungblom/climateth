@@ -12,14 +12,14 @@
     "absolutePath": "/Users/reuben/Desktop/work/blueVista/ethereum/climateth/contracts/database.sol",
     "exportedSymbols": {
       "Database": [
-        303
+        349
       ]
     },
-    "id": 304,
+    "id": 350,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 302,
+        "id": 348,
         "literals": [
           "solidity",
           "^",
@@ -35,14 +35,14 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 303,
+        "id": 349,
         "linearizedBaseContracts": [
-          303
+          349
         ],
         "name": "Database",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 304,
+        "scope": 350,
         "src": "26:24:3"
       }
     ],
@@ -52,14 +52,14 @@
     "absolutePath": "/Users/reuben/Desktop/work/blueVista/ethereum/climateth/contracts/database.sol",
     "exportedSymbols": {
       "Database": [
-        303
+        349
       ]
     },
-    "id": 304,
+    "id": 350,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 302,
+        "id": 348,
         "literals": [
           "solidity",
           "^",
@@ -75,14 +75,14 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 303,
+        "id": 349,
         "linearizedBaseContracts": [
-          303
+          349
         ],
         "name": "Database",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 304,
+        "scope": 350,
         "src": "26:24:3"
       }
     ],
@@ -94,7 +94,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.22",
-  "updatedAt": "2020-03-31T23:40:56.726Z",
+  "updatedAt": "2020-04-12T16:31:21.024Z",
   "devdoc": {
     "methods": {}
   },

@@ -1,4 +1,14 @@
-export const COUNTRY_ADDRESS = '0x7f38B87C937fDE513616a78B37d3d4B10EB6cf6C'
+
+//Contract Configs
+
+// Ropsten:
+//export const COUNTRY_ADDRESS = '0x7f38B87C937fDE513616a78B37d3d4B10EB6cf6C'
+
+
+//Ganache:
+
+export const COUNTRY_ADDRESS = '0x3a211b6Df476b883a66BB298F75eCAab7aB5E9c7'
+
 
 export const COUNTRY_ABI = [
 	{
@@ -97,6 +107,11 @@ export const COUNTRY_ABI = [
 				"internalType": "uint256",
 				"name": "changes",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "editTime",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -182,6 +197,11 @@ export const COUNTRY_ABI = [
 				"internalType": "uint256",
 				"name": "changes",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "editTime",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -245,6 +265,11 @@ export const COUNTRY_ABI = [
 						"internalType": "uint256",
 						"name": "changes",
 						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "editTime",
+						"type": "uint256"
 					}
 				],
 				"internalType": "struct CountryData.Country",
@@ -275,56 +300,6 @@ export const COUNTRY_ABI = [
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "oldTotal",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "oldPerCap",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "oldEPI",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "oldEH",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "oldEV",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "numRevisions",
-				"type": "uint256"
-			}
-		],
-		"name": "storeOldCountry",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
